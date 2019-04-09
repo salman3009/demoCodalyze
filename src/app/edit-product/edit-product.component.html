@@ -1,0 +1,107 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <form #editForm="ngForm" (ngSubmit)="updatePost(editForm)">
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="Name">Name:</label>
+              <input type="text" id="nameContain" name="namContain" #nameedit="ngModel" [(ngModel)]="nameContain" required>
+              <div *ngIf="nameedit.invalid && nameedit.touched && nameedit.errors.required" class="alert alert-danger">
+                Name cannot be blank
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="Weight">Weight:</label>
+              <input type="text" id="Weightedit" name="Weightedit" #Weightedit="ngModel" [(ngModel)]="weight" required>
+              <div *ngIf="Weightedit.invalid && Weightedit.touched && Weightedit.errors.required" class="alert alert-danger">
+                Weight cannot be blank
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="Availability">Availability:</label>
+              <input type="number" id="Availabilityedit" name="Availabilityedit" #availabilityedit="ngModel"
+                [(ngModel)]="availability">
+
+            </div>
+          </div>
+          <div class="Col-12">
+            <div class="form-group">
+              <label for="product url">ProductURL:</label>
+              <input type="text" id="ProductURLedit" name="ProductURLedit" #ProductURLeditedit="ngModel" [(ngModel)]="producturl" required>
+              <div *ngIf="ProductURLeditedit.invalid && ProductURLeditedit.touched && ProductURLeditedit.errors.required"
+                class="alert alert-danger">
+                Weight cannot be blank
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+
+            <div class="form-group">
+              <label for="product url">Price:</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="commonprice" #priceEdit="ngModel" (click)="selectPricing(true)"
+                    name="priceCommon" required>budget
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" [value]="false" [(ngModel)]="commonprice" #priceEdit="ngModel" (click)="selectPricing(false)"
+                    name="priceCommon" required>Premier
+                </label>
+              </div>
+              <div *ngIf="priceEdit.invalid && priceEdit.touched && priceEdit.errors.required"
+                class="alert alert-danger">
+                Pricing cannot be empty
+              </div>
+            </div>
+
+          </div>
+          <div class="Col-12">
+
+
+            <div class="form-group">
+              <label for="priceRange">Price Range</label>
+              <select class="form-control" id="editrole" [(ngModel)]="price" name="editrole" required #editrole="ngModel">
+                <option *ngFor="let prf of priceRange">
+                  {{ prf}}
+                </option>
+              </select>
+              <div *ngIf="editrole.invalid && editrole.touched && editrole.errors.required" class="alert alert-danger">
+                Please select atleast one Price
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <input type="checkbox" class="form-check-input" name="editabe" [(ngModel)]="isEditable" #editcheck="ngModel"
+              id="exampleCheck1" required>
+            Editable
+            <div *ngIf="editcheck.invalid && editcheck.touched && editcheck.errors.required" class="alert alert-danger">
+              Please select checkbox
+            </div>
+          </div>
+          <div class="Col-12">
+            <button type="submit" [disabled]="editForm.form.invalid" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="col-1">
+
+    </div>
+  </div>
+</div>
